@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin-top: 40px;
+}
+
+.cards {
+  display: flex;
+  margin: 0 auto;
+  padding: 0 20px;
+  align-items: center;
+  max-width: 300px;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+}
+
+.card {
+  width: 300px;
+  height: 300px;
+  border: 2px solid;
+  border-radius: 10px;
+  margin: 0 20px;
+  padding: 30px;
+  position: absolute;
+  transition: all 1s;
+  top: 0;
+  left: 0;
+}
+
+.card.prev {
+  transform: rotate(-60deg);
+  left: -600px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card.next {
+  transform: rotate(60deg);
+  left: 600px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card.current {
+  transform: none;
+  opacity: 1;
+}
