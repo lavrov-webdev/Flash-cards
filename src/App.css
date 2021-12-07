@@ -8,13 +8,91 @@ body {
   margin-top: 40px;
 }
 
+ul {
+  list-style-type: none;
+}
+
+.wrapper {
+  max-width: 1140px;
+  padding: -15px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.center {
+  max-width: 390px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons {
+  margin-bottom: 30px;
+}
+
+.buttonsTitle {
+  margin-bottom: 20px;
+}
+
+.buttonsList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonsItem:not(:last-child) {
+  margin-right: 30px;
+}
+
+.buttonsItem label {
+  cursor: pointer;
+}
+
+.buttonsItem label input {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+  opacity: 0;
+}
+
+.buttonsItem label span {
+  position: relative;
+  transition: all .3s;
+  z-index: 2;
+}
+
+.buttonsItem label span::after {
+  content: '';
+  width: 110%;
+  height: 1px;
+  background-color: #000;
+  position: absolute;
+  left: -5%;
+  bottom: -5px;
+  transition:  all .3s;
+  z-index: -1;
+}
+
+.buttonsItem label input:checked + span {
+  color: #fff;
+}
+
+.buttonsItem label:hover span::after {
+  height: 5px;
+}
+
+.buttonsItem label input:checked + span::after {
+  height: calc(100% + 10px);
+}
+
 .cards {
   display: flex;
-  margin: 0 auto;
   padding: 0 20px;
   align-items: center;
-  max-width: 300px;
-  width: 100%;
+  width: min(300px, 80vw);
   justify-content: space-between;
   position: relative;
 }
@@ -24,7 +102,6 @@ body {
   height: 300px;
   border: 2px solid;
   border-radius: 10px;
-  margin: 0 20px;
   padding: 30px;
   position: absolute;
   transition: all 1s;
@@ -49,4 +126,66 @@ body {
 .card.current {
   transform: none;
   opacity: 1;
+}
+
+.cardForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardTitle {
+  margin-bottom: 30px;
+}
+
+.inputAnswer {
+  border-width: 0px 0px 1px 0px;
+  border-color: #090808;
+  transition: all .3s;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.inputAnswer:focus {
+  outline: none;
+  border-width: 0px 0px 2px 0px;
+}
+
+.defaultButton {
+  position: relative;
+  transition: all .3s;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.defaultButton:after {
+  position: absolute;
+  content: '';
+  width: calc((100% + 10px));
+  background-color: #000;
+  height: 1px;
+  transition: all .3s;
+  bottom: -5px;
+  left: -5px;
+  z-index: -1;
+}
+
+.defaultButton:hover {
+  color: #fff;
+}
+
+.defaultButton:hover:after {
+  height: calc(100% + 10px);
+}
+
+.checkButton {
+  margin-bottom: 20px;
+}
+
+.answerText {
+  text-align: center;
+  color: rgb(70, 67, 67);
+  margin-top: 20px;
+  font-size: 14px;
 }
