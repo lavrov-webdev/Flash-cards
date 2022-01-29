@@ -21,8 +21,8 @@ function App() {
   }
 
   const answerCheckHandler = (card: cardType, index: number) => {
-    let answer = answerInput.replace(/[,\.;]/g, ',').toLowerCase().trim();
-    let rightAnswer = card.en.replace(/[,\.;]/g, ',').toLowerCase().trim()
+    let answer = answerInput.replace(/[,\.;]/g, ',').replace(/[`']/g, '’').toLowerCase().trim();
+    let rightAnswer = card.en.replace(/[,\.;]/g, ',').replace(/[`']/g, '’').toLowerCase().trim();
     if (answer === rightAnswer) {
       setCurrentCardIndex(p => p + 1);
       setWrongTryCout(0);
@@ -35,7 +35,9 @@ function App() {
     setAnswerInput('');
   }
 
-  const showAnserHandler = (answer: string) => {
+  const showAnserHandler = (answer: string, index: number) => {
+		let currentInput: HTMLInputElement | null = document.querySelector(`.input-${ index }`) 
+    if (currentInput !== null ) currentInput?.focus();
     setAnswerText(answer);
   }
 
@@ -63,14 +65,11 @@ function App() {
 		resetState();
 	}
 
-	let title = 'asd'
-
-
   return (
 		<div className="wrapper">
 			<div className="center">
 				<div className="buttons">
-				<h2 className='buttonsTitle'>{title}</h2>
+				<h2 className='buttonsTitle'>Англиский для киски</h2>
 					<ul className='buttonsList'>
 						<li className='buttonsItem'>
 							<label onClick={setDefaultOrder}>
@@ -110,7 +109,7 @@ function App() {
 									<input className={`input-${index} inputAnswer`} value={answerInput} onChange={changeAnswerHandler}/>
 									<button className='defaultButton checkButton' type='submit'>Проверить</button>
 									{
-										wrongTryCout >= 1 && <button className='defaultButton' onClick={() => showAnserHandler(card.en)}>Показать ответ</button>
+										wrongTryCout >= 1 && <div className='defaultButton' onClick={() => showAnserHandler(card.en, index)}>Показать ответ</div>
 									}
 									{
 										answerText && <p className='answerText'>{answerText}</p>
