@@ -21,8 +21,8 @@ function App() {
   }
 
   const answerCheckHandler = (card: cardType, index: number) => {
-    let answer = answerInput.replace(/[,\.;]/g, ',').replace(/[`']/g, '’').toLowerCase().trim();
-    let rightAnswer = card.en.replace(/[,\.;]/g, ',').replace(/[`']/g, '’').toLowerCase().trim();
+    let answer = answerInput.replace(/[,\.;]/g, ',').replace(/[`']/g, '’').replace(/\u00a0/g, " ").toLowerCase().trim();
+    let rightAnswer = card.en.replace(/[,\.;]/g, ',').replace(/[`']/g, '’').replace(/\u00a0/g, " ").toLowerCase().trim();
 	console.log(`rightAnswer is ${rightAnswer}, answer is ${answer}. Its same? ${answer === rightAnswer}`)
     if (answer === rightAnswer) {
       setCurrentCardIndex(p => p + 1);
