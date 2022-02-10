@@ -16,24 +16,36 @@ function App() {
   const [order, setOrder]                       = useState<orderType>('default')
   const [cardToDraw, setCardToDraw]             = useState<cardType[]>(data);
 
-  const changeAnswerHandler = (e: React.FormEvent<HTMLInputElement>) => {
-    setAnswerInput(e.currentTarget.value);
-  }
-
-  const answerCheckHandler = (card: cardType, index: number) => {
-    let answer = answerInput.replace(/[,\.;]/g, ',').replace(/[`']/g, '’').replace(/\u00a0/g, " ").toLowerCase().trim();
-    let rightAnswer = card.en.replace(/[,\.;]/g, ',').replace(/[`']/g, '’').replace(/\u00a0/g, " ").toLowerCase().trim();
-	console.log(`rightAnswer is ${rightAnswer}, answer is ${answer}. Its same? ${answer === rightAnswer}`)
-    if (answer === rightAnswer) {
+  const rightAnswerHandler = () => {
       setCurrentCardIndex(p => p + 1);
       setWrongTryCout(0);
       setAnswerText('');
-      let nexInput: HTMLInputElement | null = document.querySelector(`.input-${index + 1}`) 
+      let nexInput: HTMLInputElement | null = document.querySelector(`.input-${currentCardIndex+ 1}`) 
       if (nexInput !== null ) nexInput?.focus();
+      setAnswerInput('');
+  };
+
+  const getAnswerAndRightAnswer = (currentAnswer = answerInput) => {
+    let answer = currentAnswer.replace(/[,\.;]/g, ',').replace(/[`']/g, '’').replace(/\u00a0/g, " ").toLowerCase().trim();
+    let rightAnswer = cardToDraw[currentCardIndex].en.replace(/[,\.;]/g, ',').replace(/[`']/g, '’').replace(/\u00a0/g, " ").toLowerCase().trim();
+    return { answer, rightAnswer };
+  };
+
+  const changeAnswerHandler = (e: React.FormEvent<HTMLInputElement>) => {
+    setAnswerInput(e.currentTarget.value);
+    const { answer, rightAnswer } = getAnswerAndRightAnswer(e.currentTarget.value); 
+    if (answer === rightAnswer) rightAnswerHandler();
+  }
+
+  const answerCheckHandler = () => {
+    const { answer, rightAnswer } = getAnswerAndRightAnswer(); 
+    console.log(`rightAnswer is ${rightAnswer}, answer is ${answer}. Its same? ${answer === rightAnswer}`);
+    if (answer === rightAnswer) {
+      rightAnswerHandler();
     } else {
       setWrongTryCout(prev => prev + 1);
+      setAnswerInput('');
     }
-    setAnswerInput('');
   }
 
   const showAnserHandler = (answer: string, index: number) => {
@@ -104,7 +116,7 @@ function App() {
 							})}>
 								<form className='cardForm' onSubmit={(e) => {
 									e.preventDefault();
-									answerCheckHandler(card, index);
+									answerCheckHandler(index);
 								}}>
 									<h2 className='cardTitle'>{card.rus}</h2>
 									<input className={`input-${index} inputAnswer`} value={answerInput} onChange={changeAnswerHandler}/>
