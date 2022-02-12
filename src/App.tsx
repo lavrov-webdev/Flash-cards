@@ -116,7 +116,7 @@ function App() {
 							})}>
 								<form className='cardForm' onSubmit={(e) => {
 									e.preventDefault();
-									answerCheckHandler(index);
+									answerCheckHandler();
 								}}>
 									<h2 className='cardTitle'>{card.rus}</h2>
 									<input className={`input-${index} inputAnswer`} value={answerInput} onChange={changeAnswerHandler}/>
