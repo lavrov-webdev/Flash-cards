@@ -143,6 +143,10 @@ ul {
 }
 
 .cardTitle {
+  margin-bottom: 10px;
+}
+
+.cardSubTitle {
   margin-bottom: 30px;
 }
 

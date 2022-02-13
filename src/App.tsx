@@ -159,6 +159,7 @@ function App() {
                     answerCheckHandler();
                   }}>
                   <h2 className='cardTitle'>{card.rus}</h2>
+                  <span className='cardSubTitle'>{index + 1}</span>
                   <input className={`input-${index} inputAnswer`} value={answerInput} onChange={changeAnswerHandler}/>
                   <button className='defaultButton checkButton' type='submit'>Проверить</button>
                   {
