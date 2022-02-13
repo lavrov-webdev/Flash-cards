@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import cn from 'classnames';
 import shuffleArray from 'shuffle-array';
 import './App.css'
@@ -15,6 +15,15 @@ function App() {
   const [wrongTryCout, setWrongTryCout]         = useState(0);
   const [order, setOrder]                       = useState<orderType>('default')
   const [cardToDraw, setCardToDraw]             = useState<cardType[]>(data);
+  const [selectedGroups,setSelectedGroups]      = useState([]);
+
+  const numberOfHundred = Math.trunc(data.length / 100) + 1;
+
+  let selectGroups = [];
+
+  for (let i = 1; i <= numberOfHundred; i++) {
+    selectGroups.push(i);
+  };
 
   const rightAnswerHandler = () => {
       setCurrentCardIndex(p => p + 1);
@@ -60,23 +69,51 @@ function App() {
 		setCurrentCardIndex(0);
 	}
 
+  const updateCards = () => {
+    let sorteredData = [];
+    switch(order) {
+      case 'default':
+        sorteredData = data;
+        break;
+      case 'random':
+        sorteredData = shuffleArray(data, {copy: true})
+        break;
+      case 'reverse':
+        sorteredData = [...data].reverse();
+        break;
+    }
+    if (selectedGroups.length === 0) { 
+      setCardToDraw(sorteredData);
+      return;
+    }
+    setCardToDraw(sorteredData.filter(( _, index ) => selectedGroups.includes(Math.trunc(index / 100) + 1)))
+  };
+
 	const setDefaultOrder = () => {
 		setOrder('default');
-		setCardToDraw(data);
 		resetState();
 	}
 
 	const setRandomOrder = ()	=> {
 		setOrder('random');
-		setCardToDraw(shuffleArray(data, {copy: true}));
 		resetState();
 	}
 
 	const setReverseOrder = () => {
 		setOrder('reverse');
-		setCardToDraw([...data].reverse())
 		resetState();
 	}
+
+  const toggleGroupItem = (index) => {
+    if (selectedGroups.includes(index)) {
+      setSelectedGroups(prev => prev.filter(i => i != index))
+      return
+    }
+    setSelectedGroups(prev => [...prev, index])
+      setCardsToDrawWithLimits(cardToDraw);
+  };
+
+  useEffect(updateCards, [order, selectedGroups])
 
   return (
 		<div className="wrapper">
@@ -104,34 +141,54 @@ function App() {
 						</li>
 					</ul>
 				</div>
-				<div className='cards'>
-					<div className='card prev'></div>
-					{cardToDraw.map((card, index) => {
-						if (Math.abs(index - currentCardIndex) > 1) return
-						return (
-							<div key={hashCode(card.rus + card.en)} className={cn('card ', {
-								prev: index < currentCardIndex,
-								current: index === currentCardIndex,
-								next: index > currentCardIndex,
-							})}>
-								<form className='cardForm' onSubmit={(e) => {
-									e.preventDefault();
-									answerCheckHandler();
-								}}>
-									<h2 className='cardTitle'>{card.rus}</h2>
-									<input className={`input-${index} inputAnswer`} value={answerInput} onChange={changeAnswerHandler}/>
-									<button className='defaultButton checkButton' type='submit'>Проверить</button>
-									{
-										wrongTryCout >= 1 && <div className='defaultButton' onClick={() => showAnserHandler(card.en, index)}>Показать ответ</div>
-									}
-									{
-										answerText && <p className='answerText'>{answerText}</p>
-									}
-								</form>
-							</div>
-						)
-					})}
-				</div>
+        <div className="middleWrapper">
+          <div className='cards'>
+          <div className='card prev'></div>
+          {cardToDraw.map((card, index) => {
+            if (Math.abs(index - currentCardIndex) > 1) return
+              return (
+                <div
+                  key={hashCode(card.rus + card.en)}
+                  className={cn('card ', {
+                    prev: index < currentCardIndex,
+                    current: index === currentCardIndex,
+                    next: index > currentCardIndex,
+                  })}
+                >
+                  <form className='cardForm' onSubmit={(e) => {
+                    e.preventDefault();
+                    answerCheckHandler();
+                  }}>
+                  <h2 className='cardTitle'>{card.rus}</h2>
+                  <input className={`input-${index} inputAnswer`} value={answerInput} onChange={changeAnswerHandler}/>
+                  <button className='defaultButton checkButton' type='submit'>Проверить</button>
+                  {
+                    wrongTryCout >= 1 && <div className='defaultButton' onClick={() => showAnserHandler(card.en, index)}>Показать ответ</div>
+                  }
+                  {
+                    answerText && <p className='answerText'>{answerText}</p>
+                  }
+                  </form>
+                </div>
+              )
+          })}
+          </div>
+          <div className='selectGroups'>
+            {selectGroups.map(i => (
+              <label
+                key={i} 
+                className="selectGroupItem"
+              >
+                <input
+                  onChange={() => toggleGroupItem(i)}
+                  checked={selectedGroups.includes(i)}
+                  type='checkbox'
+                />
+                {(i - 1) * 100 + 1}-{i*100}
+              </label>)
+            )}
+          </div> 
+        </div>
 			</div>
 		</div>
   )

@@ -6,6 +6,7 @@
 
 body {
   margin-top: 40px;
+  background: pink;
 }
 
 ul {
@@ -88,11 +89,17 @@ ul {
   height: calc(100% + 10px);
 }
 
+
+.middleWrapper {
+  position: relative;
+}
+
 .cards {
   display: flex;
   padding: 0 20px;
   align-items: center;
   width: min(300px, 80vw);
+  height: 300px;
   justify-content: space-between;
   position: relative;
 }
@@ -107,6 +114,7 @@ ul {
   transition: all 1s;
   top: 0;
   left: 0;
+  background: white;
 }
 
 .card.prev {
@@ -188,4 +196,20 @@ ul {
   color: rgb(70, 67, 67);
   margin-top: 20px;
   font-size: 14px;
+}
+
+.selectGroups {
+  position: absolute;
+  top: 0;
+  right: -300px;
+}
+
+.selectGroupItem {
+  display: block;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.selectGroupItem input {
+  margin-right: 10px;
 }
