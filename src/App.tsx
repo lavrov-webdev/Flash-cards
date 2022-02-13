@@ -15,7 +15,7 @@ function App() {
   const [wrongTryCout, setWrongTryCout]         = useState(0);
   const [order, setOrder]                       = useState<orderType>('default')
   const [cardToDraw, setCardToDraw]             = useState<cardType[]>(data);
-  const [selectedGroups,setSelectedGroups]      = useState([]);
+  const [selectedGroups,setSelectedGroups]      = useState<number[]>([]);
 
   const numberOfHundred = Math.trunc(data.length / 100) + 1;
 
@@ -104,13 +104,12 @@ function App() {
 		resetState();
 	}
 
-  const toggleGroupItem = (index) => {
+  const toggleGroupItem = (index: number) => {
     if (selectedGroups.includes(index)) {
       setSelectedGroups(prev => prev.filter(i => i != index))
       return
     }
     setSelectedGroups(prev => [...prev, index])
-      setCardsToDrawWithLimits(cardToDraw);
   };
 
   useEffect(updateCards, [order, selectedGroups])
