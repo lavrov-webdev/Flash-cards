@@ -46,20 +46,8 @@ function App() {
     if (answer === rightAnswer) rightAnswerHandler();
   }
 
-  const answerCheckHandler = () => {
-    const { answer, rightAnswer } = getAnswerAndRightAnswer(); 
-    console.log(`rightAnswer is ${rightAnswer}, answer is ${answer}. Its same? ${answer === rightAnswer}`);
-    if (answer === rightAnswer) {
-      rightAnswerHandler();
-    } else {
-      setWrongTryCout(prev => prev + 1);
-      setAnswerInput('');
-    }
-  }
-
-  const showAnserHandler = (answer: string, index: number) => {
-		let currentInput: HTMLInputElement | null = document.querySelector(`.input-${ index }`) 
-    if (currentInput !== null ) currentInput?.focus();
+  const showAnswerHandler = () => {
+    const answer = cardToDraw[currentCardIndex].en;
     navigator.clipboard.writeText(answer);
     setAnswerText(answer);
   }
@@ -155,12 +143,12 @@ function App() {
                 >
                   <form className='cardForm' onSubmit={(e) => {
                     e.preventDefault();
-                    answerCheckHandler();
+                    showAnswerHandler();
                   }}>
                   <h2 className='cardTitle'>{card.rus}</h2>
                   <span className='cardSubTitle'>{index + 1}</span>
                   <input className={`input-${index} inputAnswer`} value={answerInput} onChange={changeAnswerHandler}/>
-                  <div className='defaultButton' onClick={() => showAnserHandler(card.en, index)}>Показать ответ</div>
+                  <button className='defaultButton' type='submit'>Показать ответ</button>
                   {
                     answerText && <p className='answerText'>{answerText}</p>
                   }
