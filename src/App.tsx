@@ -159,10 +159,7 @@ function App() {
                   <h2 className='cardTitle'>{card.rus}</h2>
                   <span className='cardSubTitle'>{index + 1}</span>
                   <input className={`input-${index} inputAnswer`} value={answerInput} onChange={changeAnswerHandler}/>
-                  <button className='defaultButton checkButton' type='submit'>Проверить</button>
-                  {
-                    wrongTryCout >= 1 && <div className='defaultButton' onClick={() => showAnserHandler(card.en, index)}>Показать ответ</div>
-                  }
+                  <div className='defaultButton' onClick={() => showAnserHandler(card.en, index)}>Показать ответ</div>
                   {
                     answerText && <p className='answerText'>{answerText}</p>
                   }
