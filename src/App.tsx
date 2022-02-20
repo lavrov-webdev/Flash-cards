@@ -60,6 +60,7 @@ function App() {
   const showAnserHandler = (answer: string, index: number) => {
 		let currentInput: HTMLInputElement | null = document.querySelector(`.input-${ index }`) 
     if (currentInput !== null ) currentInput?.focus();
+    navigator.clipboard.writeText(answer);
     setAnswerText(answer);
   }
 
