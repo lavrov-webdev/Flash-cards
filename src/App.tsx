@@ -70,23 +70,21 @@ function App() {
 	}
 
   const updateCards = () => {
-    let sorteredData = [];
+    let filteredData = [...data];
+    if (selectedGroups.length != 0) {
+      filteredData = filteredData.filter(( _, index ) => selectedGroups.includes(Math.trunc(index / 100) + 1));
+    }
     switch(order) {
       case 'default':
-        sorteredData = data;
+        setCardToDraw(filteredData);
         break;
       case 'random':
-        sorteredData = shuffleArray(data, {copy: true})
+        setCardToDraw(shuffleArray(filteredData, {copy: true}));
         break;
       case 'reverse':
-        sorteredData = [...data].reverse();
+        setCardToDraw([...filteredData].reverse());
         break;
     }
-    if (selectedGroups.length === 0) { 
-      setCardToDraw(sorteredData);
-      return;
-    }
-    setCardToDraw(sorteredData.filter(( _, index ) => selectedGroups.includes(Math.trunc(index / 100) + 1)))
   };
 
 	const setDefaultOrder = () => {
