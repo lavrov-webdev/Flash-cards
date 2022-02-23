@@ -125,6 +125,7 @@ function App() {
 	};
 
 	const toggleOnlyDifficult = () => {
+    if (!onlyDifficult) setSelectedGroups([]);
 		setOnlyDifficult((prev) => !prev);
 	};
 
