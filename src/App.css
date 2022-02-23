@@ -21,7 +21,6 @@ ul {
 }
 
 .center {
-  max-width: 390px;
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -91,7 +90,9 @@ ul {
 
 
 .middleWrapper {
-  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .cards {
@@ -192,9 +193,6 @@ ul {
 }
 
 .selectGroups {
-  position: absolute;
-  top: 0;
-  right: -300px;
 }
 
 .selectGroupItem {

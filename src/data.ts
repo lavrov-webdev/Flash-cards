@@ -18,18 +18,24 @@ dataHTML.innerHTML = `
 `
 
 let data: cardType[] = [];
+const hashCode = (s: string) =>
+	s.split("").reduce((a, b) => {
+		a = (a << 5) - a + b.charCodeAt(0);
+		return a & a;
+	}, 0);
 
 dataHTML.querySelectorAll('.thing.text-text').forEach((item) => {
-  let newDataElement: {
-    rus: string | null | undefined,
-    en: string | null | undefined
-  } = {
+  let newDataElement: cardType = {
     rus: '',
-    en: ''
+    en: '',
+    id: 0,
   };
-  newDataElement.en = item.querySelector('.col_a .text')?.textContent;
-  newDataElement.rus  = item.querySelector('.col_b .text')?.textContent;
-  if (newDataElement.rus && newDataElement.en) data.push(newDataElement as cardType);
+  newDataElement.en = item.querySelector('.col_a .text')?.textContent || '';
+  newDataElement.rus  = item.querySelector('.col_b .text')?.textContent || '';
+  if (newDataElement.rus && newDataElement.en) {
+    newDataElement.id = hashCode(newDataElement.en + newDataElement.rus);
+    data.push(newDataElement as cardType);
+  }
 });
 
 export default data;
