@@ -16,7 +16,159 @@ dataHTML.innerHTML = `
                 Сохранить
             </a></div></div>
 	    
-	    <div class="things clearfix" data-column-a="1" data-column-b="2"><div class="things-header things-row"><i class="ico ico-seed ico-purple"></i> Готово к изучению
+	    <div class="span9">
+
+            
+                
+
+<div class="progress-box progress-box-level">
+
+    
+
+    <div class="infos">
+        
+
+        
+            <div class="progress-box-title">
+                
+                    28 / 36
+                    слов в долгосрочной памяти
+                    <span class="pull-right">
+                        
+0 пропущено
+                    </span>
+                
+            </div>
+        
+
+        <div class="progress" title="" data-placement="bottom" data-original-title="77% learned">
+            
+                <span class="bar bar-success" style="width: 77%;"></span>
+            
+        </div>
+    </div>
+
+    <hr>
+
+    
+
+    <div class="actions actions-left">
+        
+            <div class="btn-group">
+                <button class="button small dropdown-toggle" data-toggle="dropdown">
+                    <span class="text">Опции</span>
+                    <span class="ico ico-arr-down"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    
+                        <li>
+                            
+                                <a href="/aprender/review?course_id=6142037&amp;level_index=1" title="" data-placement="right" data-tracking-name="level_details_session" accesskey="o" data-original-title="Повторить увиденные слова [Клавиша: O]">
+                                    <i class="ico ico-water"></i>
+                                    Повторить
+                                </a>
+                            
+                        </li>
+                    
+                    <li>
+                        
+                           <a href="/aprender/preview?course_id=6142037&amp;level_index=1" title="" data-placement="right" accesskey="p" data-original-title="Показывать слова как презентации [Клавиша: P]">
+                                <i class="ico ico-look"></i>
+                                Предварительный просмотр
+                            </a>
+                        
+                    </li>
+                    
+                    
+                        <li class="divider"></li>
+                        
+
+<li>
+    <a href="#" data-role="course-restart">
+        <span class="ico ico-loop"></span>
+        Перезапустить
+    </a>
+</li>
+<li>
+    <a href="#" data-role="course-unenroll">
+        <i class="ico ico-stop"></i>
+        Выйти
+    </a>
+</li>
+
+                    
+                    
+                </ul>
+            </div>
+        
+    </div>
+    <div class="actions actions-right">
+        
+
+
+
+    
+
+        
+            
+            <a href="/home/difficult-words/?source=mode_selector&amp;session_type=difficult_words" class="btn btn-light-blue disabled-click-thru" data-placement="top" data-original-title="Узнать больше о трудных словах">
+                <span class="ico ico-bolt"></span>
+                <span>0</span>
+            </a>
+
+            
+            
+                <a href="/premium?source=mode_selector&amp;session_type=audio#audio" class="btn btn-light-blue disabled-click-thru" data-placement="top" data-original-title="Узнать больше об аудио повторении">
+                  <span class="ico ico-audio"></span>
+                </a>
+            
+        
+
+        
+            
+            
+                <a href="/aprender/speed?course_id=6142037" class="btn btn-light-blue" tabindex="1" title="" data-tracking-name="course_mode" data-placement="top" data-original-title="Быстрое повторение">
+                    <span class="ico ico-clock"></span>
+                </a>
+            
+
+            
+            
+                <a href="/aprender/review?course_id=6142037" class="btn btn-light-blue" tabindex="1" title="" data-tracking-name="course_mode" data-placement="top" data-original-title="Повторить выученные слова">
+                    <span class="text">
+                        Повторить (28)
+                    </span>
+                </a>
+            
+        
+
+        
+        
+            
+                
+                  <a href="/aprender/learn?course_id=6142037" class="btn btn-light-green" tabindex="1" title="" data-tracking-name="course_mode" data-placement="top" data-original-title="Учить новые слова">
+                      Учить
+                  </a>
+                
+            
+        
+    
+
+
+
+    </div>
+
+
+
+    <div class="clear"></div>
+</div>
+
+
+                
+
+<div class="things clearfix" data-column-a="1" data-column-b="2"><div class="things-header things-row"><a class="ignore-show button mini" title="" data-placement="right" data-original-title="Change whether words appear in learning sessions"><i class="ico ico-settings"></i>
+                пропустить
+            </a><i class="ico ico-seed ico-purple"></i> Готово к изучению
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <i class="ico ico-water ico-blue"></i> Готово к повторению
         </div><div class="ignore-ui things-row clearfix"><h2>Пропустить слова</h2><p>
@@ -25,9 +177,12 @@ dataHTML.innerHTML = `
                     Все
                 </a><a href="#" class="ignore-none btn btn-small">
                     None
-                </a></p></div><div class="ignore-ui things-row" style="text-align: right"><strong>Пропустить?</strong></div><div class="thing text-text" data-learnable-id="21524137246978" data-thing-id="328432270"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">wrong</div></div><div class="col_b col text"><div class="text">неправильный</div></div></div><div class="thing text-text" data-learnable-id="21524137312514" data-thing-id="328432271"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">What's wrong?</div></div><div class="col_b col text"><div class="text">Что случилось? Что не так?</div></div></div><div class="thing text-text" data-learnable-id="21524137378050" data-thing-id="328432272"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">any</div></div><div class="col_b col text"><div class="text">любой</div></div></div><div class="thing text-text" data-learnable-id="21524137443586" data-thing-id="328432273"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">cashpoint</div></div><div class="col_b col text"><div class="text">банкомат</div></div></div><div class="thing text-text" data-learnable-id="21524137509122" data-thing-id="328432274"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">down</div></div><div class="col_b col text"><div class="text">вниз, внизу</div></div></div><div class="thing text-text" data-learnable-id="21524137574658" data-thing-id="328432275"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">down the road</div></div><div class="col_b col text"><div class="text">вниз по дороге, дальше по улице</div></div></div><div class="thing text-text" data-learnable-id="21524137640194" data-thing-id="328432276"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">in 5 minutes</div></div><div class="col_b col text"><div class="text">через 5 минут</div></div></div><div class="thing text-text" data-learnable-id="21524137705730" data-thing-id="328432277"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">quick</div></div><div class="col_b col text"><div class="text">быстрый, быстро</div></div></div><div class="thing text-text" data-learnable-id="21524137771266" data-thing-id="328432278"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">lift</div></div><div class="col_b col text"><div class="text">лифт, поднимать</div></div></div><div class="thing text-text" data-learnable-id="21524137836802" data-thing-id="328432279"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">take the lift</div></div><div class="col_b col text"><div class="text">ехать на лифте</div></div></div><div class="thing text-text" data-learnable-id="21524137902338" data-thing-id="328432280"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">out</div></div><div class="col_b col text"><div class="text">из, вне, снаружи</div></div></div><div class="thing text-text" data-learnable-id="21524137967874" data-thing-id="328432281"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">straight</div></div><div class="col_b col text"><div class="text">прямой, прямо</div></div></div><div class="thing text-text" data-learnable-id="21524138033410" data-thing-id="328432282"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">go straight on</div></div><div class="col_b col text"><div class="text">иди прямо</div></div></div><div class="thing text-text" data-learnable-id="21524138098946" data-thing-id="328432283"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">come out of the lift</div></div><div class="col_b col text"><div class="text">выйти из лифта</div></div></div><div class="thing text-text" data-learnable-id="21524138164482" data-thing-id="328432284"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">left a bit</div></div><div class="col_b col text"><div class="text">немного налево</div></div></div><div class="thing text-text" data-learnable-id="21524138230018" data-thing-id="328432285"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">nobody</div></div><div class="col_b col text"><div class="text">никто, никого</div></div></div><div class="thing text-text" data-learnable-id="21524138295554" data-thing-id="328432286"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">definitely</div></div><div class="col_b col text"><div class="text">несомненно</div></div></div><div class="thing text-text" data-learnable-id="21524138361090" data-thing-id="328432287"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">shoe</div></div><div class="col_b col text"><div class="text">туфля</div></div></div><div class="thing text-text" data-learnable-id="21524138426626" data-thing-id="328432288"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">trousers</div></div><div class="col_b col text"><div class="text">брюки</div></div></div><div class="thing text-text" data-learnable-id="21524138492162" data-thing-id="328432289"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">jeans</div></div><div class="col_b col text"><div class="text">джинсы</div></div></div><div class="thing text-text" data-learnable-id="21524138557698" data-thing-id="328432290"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">shorts</div></div><div class="col_b col text"><div class="text">шорты</div></div></div><div class="thing text-text" data-learnable-id="21524138623234" data-thing-id="328432291"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">which</div></div><div class="col_b col text"><div class="text">какой (из конкретного выбора)</div></div></div><div class="thing text-text" data-learnable-id="21524138688770" data-thing-id="328432292"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">basement</div></div><div class="col_b col text"><div class="text">цокольный этаж, подвал</div></div></div><div class="thing text-text" data-learnable-id="21524138754306" data-thing-id="328432293"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">men's clothes</div></div><div class="col_b col text"><div class="text">мужская одежда</div></div></div><div class="thing text-text" data-learnable-id="21524138819842" data-thing-id="328432294"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">cashdesk</div></div><div class="col_b col text"><div class="text">касса</div></div></div><div class="thing text-text" data-learnable-id="21524138885378" data-thing-id="328432295"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">yard</div></div><div class="col_b col text"><div class="text">двор</div></div></div><div class="thing text-text" data-learnable-id="21524138950914" data-thing-id="328432296"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">clothes shop</div></div><div class="col_b col text"><div class="text">магазин одежды</div></div></div><div class="thing text-text" data-learnable-id="21524139016450" data-thing-id="328432297"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">See you</div></div><div class="col_b col text"><div class="text">Увидимся</div></div></div><div class="things-footer things-row clearfix"><a class="ignore-save ignore-ui btn pull-right btn-primary btn-large btn-block hide">
+                </a></p></div><div class="ignore-ui things-row" style="text-align: right"><strong>Пропустить?</strong></div><div class="thing text-text" data-learnable-id="21524137246978" data-thing-id="328432270"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">wrong</div></div><div class="col_b col text"><div class="text">неправильный</div></div></div><div class="thing text-text" data-learnable-id="21524137312514" data-thing-id="328432271"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">What's wrong?</div></div><div class="col_b col text"><div class="text">Что случилось? Что не так?</div></div></div><div class="thing text-text" data-learnable-id="21524137378050" data-thing-id="328432272"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">any</div></div><div class="col_b col text"><div class="text">любой</div></div></div><div class="thing text-text" data-learnable-id="21524137443586" data-thing-id="328432273"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">cashpoint</div></div><div class="col_b col text"><div class="text">банкомат</div></div></div><div class="thing text-text" data-learnable-id="21524137509122" data-thing-id="328432274"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">down</div></div><div class="col_b col text"><div class="text">вниз, внизу</div></div></div><div class="thing text-text" data-learnable-id="21524137574658" data-thing-id="328432275"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">down the road</div></div><div class="col_b col text"><div class="text">вниз по дороге, дальше по улице</div></div></div><div class="thing text-text" data-learnable-id="21524137640194" data-thing-id="328432276"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">in 5 minutes</div></div><div class="col_b col text"><div class="text">через 5 минут</div></div></div><div class="thing text-text" data-learnable-id="21524137705730" data-thing-id="328432277"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">quick</div></div><div class="col_b col text"><div class="text">быстрый, быстро</div></div></div><div class="thing text-text" data-learnable-id="21524137771266" data-thing-id="328432278"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">lift</div></div><div class="col_b col text"><div class="text">лифт, поднимать</div></div></div><div class="thing text-text" data-learnable-id="21524137836802" data-thing-id="328432279"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">take the lift</div></div><div class="col_b col text"><div class="text">ехать на лифте</div></div></div><div class="thing text-text" data-learnable-id="21524137902338" data-thing-id="328432280"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">out</div></div><div class="col_b col text"><div class="text">из, вне, снаружи</div></div></div><div class="thing text-text" data-learnable-id="21524137967874" data-thing-id="328432281"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">straight</div></div><div class="col_b col text"><div class="text">прямой, прямо</div></div></div><div class="thing text-text" data-learnable-id="21524138033410" data-thing-id="328432282"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">go straight on</div></div><div class="col_b col text"><div class="text">иди прямо</div></div></div><div class="thing text-text" data-learnable-id="21524138098946" data-thing-id="328432283"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">come out of the lift</div></div><div class="col_b col text"><div class="text">выйти из лифта</div></div></div><div class="thing text-text" data-learnable-id="21524138164482" data-thing-id="328432284"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">left a bit</div></div><div class="col_b col text"><div class="text">немного налево</div></div></div><div class="thing text-text" data-learnable-id="21524138230018" data-thing-id="328432285"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">nobody</div></div><div class="col_b col text"><div class="text">никто, никого</div></div></div><div class="thing text-text" data-learnable-id="21524138295554" data-thing-id="328432286"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">definitely</div></div><div class="col_b col text"><div class="text">несомненно</div></div></div><div class="thing text-text" data-learnable-id="21524138361090" data-thing-id="328432287"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">shoe</div></div><div class="col_b col text"><div class="text">туфля</div></div></div><div class="thing text-text" data-learnable-id="21524138426626" data-thing-id="328432288"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">trousers</div></div><div class="col_b col text"><div class="text">брюки</div></div></div><div class="thing text-text" data-learnable-id="21524138492162" data-thing-id="328432289"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">jeans</div></div><div class="col_b col text"><div class="text">джинсы</div></div></div><div class="thing text-text" data-learnable-id="21524138557698" data-thing-id="328432290"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">shorts</div></div><div class="col_b col text"><div class="text">шорты</div></div></div><div class="thing text-text" data-learnable-id="21524138623234" data-thing-id="328432291"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">which</div></div><div class="col_b col text"><div class="text">какой (из конкретного выбора)</div></div></div><div class="thing text-text" data-learnable-id="21524138688770" data-thing-id="328432292"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">basement</div></div><div class="col_b col text"><div class="text">цокольный этаж, подвал</div></div></div><div class="thing text-text" data-learnable-id="21524138754306" data-thing-id="328432293"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">men's clothes</div></div><div class="col_b col text"><div class="text">мужская одежда</div></div></div><div class="thing text-text" data-learnable-id="21524138819842" data-thing-id="328432294"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">cashdesk</div></div><div class="col_b col text"><div class="text">касса</div></div></div><div class="thing text-text" data-learnable-id="21524138885378" data-thing-id="328432295"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">yard</div></div><div class="col_b col text"><div class="text">двор</div></div></div><div class="thing text-text" data-learnable-id="21524138950914" data-thing-id="328432296"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">clothes shop</div></div><div class="col_b col text"><div class="text">магазин одежды</div></div></div><div class="thing text-text" data-learnable-id="21524139016450" data-thing-id="328432297"><div class="thinguser"><i class="ico ico-water ico-blue"></i><div class="status">now</div></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">See you</div></div><div class="col_b col text"><div class="text">Увидимся</div></div></div><div class="thing text-text" data-learnable-id="21541170512130" data-thing-id="328692177"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">front</div></div><div class="col_b col text"><div class="text">передний</div></div></div><div class="thing text-text" data-learnable-id="21541170577666" data-thing-id="328692178"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">entrance</div></div><div class="col_b col text"><div class="text">вход</div></div></div><div class="thing text-text" data-learnable-id="21541170643202" data-thing-id="328692179"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">front doors</div></div><div class="col_b col text"><div class="text">входные двери, парадный вход</div></div></div><div class="thing text-text" data-learnable-id="21541170774274" data-thing-id="328692181"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">find out</div></div><div class="col_b col text"><div class="text">понять, обнаружить</div></div></div><div class="thing text-text" data-learnable-id="21541170839810" data-thing-id="328692182"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">remove</div></div><div class="col_b col text"><div class="text">убирать, перемещать</div></div></div><div class="thing text-text" data-learnable-id="21541170905346" data-thing-id="328692183"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">cash</div></div><div class="col_b col text"><div class="text">наличные деньги</div></div></div><div class="thing text-text" data-learnable-id="21541170970882" data-thing-id="328692184"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">still</div></div><div class="col_b col text"><div class="text">всё ещё</div></div></div><div class="thing text-text" data-learnable-id="21541171560706" data-thing-id="328692193"><div class="thinguser"><i class="ico ico-seed ico-purple"></i></div><div class="ignore-ui pull-right"><input type="checkbox"></div><div class="col_a col text"><div class="text">at the department store's&nbsp;entrance</div></div><div class="col_b col text"><div class="text">у входа в универсам</div></div></div><div class="things-footer things-row clearfix"><a class="ignore-save ignore-ui btn pull-right btn-primary btn-large btn-block hide">
                 Сохранить
             </a></div></div>
+
+            
+        </div>
 `
 
 let data: cardType[] = [];
