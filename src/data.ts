@@ -35,13 +35,8 @@ dataHTML.innerHTML = `
 `
 
 let data: CardType[] = [];
-const hashCode = (s: string) =>
-	s.split("").reduce((a, b) => {
-		a = (a << 5) - a + b.charCodeAt(0);
-		return a & a;
-	}, 0);
 
-dataHTML.querySelectorAll('.thing.text-text').forEach((item) => {
+dataHTML.querySelectorAll('.thing.text-text').forEach((item, index) => {
   let newDataElement: CardType = {
     rus: '',
     en: '',
@@ -50,7 +45,7 @@ dataHTML.querySelectorAll('.thing.text-text').forEach((item) => {
   newDataElement.en = item.querySelector('.col_a .text')?.textContent || '';
   newDataElement.rus  = item.querySelector('.col_b .text')?.textContent || '';
   if (newDataElement.rus && newDataElement.en) {
-    newDataElement.id = hashCode(newDataElement.en + newDataElement.rus);
+    newDataElement.id = index;
     data.push(newDataElement);
   }
 });
