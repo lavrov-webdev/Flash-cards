@@ -1,7 +1,9 @@
-export type cardType = {
+export type CardType = {
   rus: string,
   en: string,
   id: number,
 }
 
-export type orderType = 'default' | 'reverse' | 'random';
+export type OrderType = 'default' | 'reverse' | 'random';
+
+export type SpaceName = "memrizeSpace" | "noteSpace";

@@ -204,3 +204,9 @@ ul {
 .selectGroupItem input {
   margin-right: 10px;
 }
+
+.difficultItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

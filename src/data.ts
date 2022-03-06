@@ -1,4 +1,4 @@
-import { cardType } from './types';
+import { CardType } from './types';
 let dataHTML = document.createElement('div');
 dataHTML.innerHTML = `
 <div class="things clearfix" data-column-a="1" data-column-b="2"><div class="things-header things-row"><a class="ignore-show button mini" title="" data-placement="right" data-original-title="Change whether words appear in learning sessions"><i class="ico ico-settings"></i>
@@ -17,7 +17,7 @@ dataHTML.innerHTML = `
             </a></div></div>
 `
 
-let data: cardType[] = [];
+let data: CardType[] = [];
 const hashCode = (s: string) =>
 	s.split("").reduce((a, b) => {
 		a = (a << 5) - a + b.charCodeAt(0);
@@ -25,7 +25,7 @@ const hashCode = (s: string) =>
 	}, 0);
 
 dataHTML.querySelectorAll('.thing.text-text').forEach((item) => {
-  let newDataElement: cardType = {
+  let newDataElement: CardType = {
     rus: '',
     en: '',
     id: 0,
@@ -34,7 +34,7 @@ dataHTML.querySelectorAll('.thing.text-text').forEach((item) => {
   newDataElement.rus  = item.querySelector('.col_b .text')?.textContent || '';
   if (newDataElement.rus && newDataElement.en) {
     newDataElement.id = hashCode(newDataElement.en + newDataElement.rus);
-    data.push(newDataElement as cardType);
+    data.push(newDataElement);
   }
 });
 
