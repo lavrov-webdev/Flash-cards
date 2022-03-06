@@ -7,10 +7,15 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.7.2",
+    "@types/lodash": "^4.14.179",
     "@types/shuffle-array": "^1.0.2",
     "classnames": "^2.3.1",
+    "lodash": "^4.17.21",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
+    "react-redux": "^7.2.6",
+    "redux-persist": "^6.0.0",
     "shuffle-array": "^1.0.1"
   },
   "devDependencies": {

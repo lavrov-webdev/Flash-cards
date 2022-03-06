@@ -1,21 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import cn from "classnames";
-import shuffleArray from "shuffle-array";
 import "./App.css";
-import data from "./data";
-import { cardType, orderType } from "./types";
+import { OrderType } from "./types";
+import { useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "./redux";
+import {
+	getDifficults,
+	getFilteredWords,
+} from "./redux/selectors/wordsSelectors";
+import { formatString } from "./helpers/formatString";
+import {
+	changeOrder,
+	toggleDifficult,
+	toggleOnlyDifficult,
+	toggleSelectedGroups,
+} from "./redux/wordsSlice";
 
 function App() {
+	const dispatch = useAppDispatch();
+
+	const { originList, order, difficults, onlyDifficult, selectedGroups } =
+		useAppSelector((state) => state.words.memrizeSpace);
+	const filteredList = useSelector(getFilteredWords("memrizeSpace"));
+	const difficultsList = useSelector(getDifficults("memrizeSpace"));
+
 	const [answerInput, setAnswerInput] = useState("");
 	const [answerText, setAnswerText] = useState("");
 	const [currentCardIndex, setCurrentCardIndex] = useState(0);
-	const [order, setOrder] = useState<orderType>("default");
-	const [cardToDraw, setCardToDraw] = useState<cardType[]>(data);
-	const [selectedGroups, setSelectedGroups] = useState<number[]>([]);
-	const [difficultGroup, setDifficultGroup] = useState<number[]>([]);
-	const [onlyDifficult, setOnlyDifficult] = useState(false);
 
-	const numberOfHundred = Math.trunc(data.length / 100) + 1;
+	const numberOfHundred = Math.trunc(originList.length / 100) + 1;
 
 	let selectGroups = [];
 
@@ -23,29 +36,57 @@ function App() {
 		selectGroups.push(i);
 	}
 
+	const resetState = () => {
+		setAnswerText("");
+		setCurrentCardIndex(0);
+	};
+
+	const changeOrderHandler = (order: OrderType) => {
+		dispatch(
+			changeOrder({
+				space: "memrizeSpace",
+				order,
+			})
+		);
+		resetState();
+	};
+
+	const toggleDifficultHandler = (id: number) => {
+		dispatch(
+			toggleDifficult({
+				space: "memrizeSpace",
+				id,
+			})
+		);
+	};
+
+	const toggleOnlyDifficultHandler = () => {
+		dispatch(toggleOnlyDifficult({ space: "memrizeSpace" }));
+		resetState();
+	};
+
+	const toggleSelectedGroupsHandler = (groupid: number) => {
+		dispatch(
+			toggleSelectedGroups({
+				space: "memrizeSpace",
+				groupid,
+			})
+		);
+	};
+
 	const rightAnswerHandler = () => {
 		setCurrentCardIndex((p) => p + 1);
 		setAnswerText("");
 		let nexInput: HTMLInputElement | null = document.querySelector(
 			`.input-${currentCardIndex + 1}`
 		);
-		if (nexInput !== null) nexInput?.focus();
+		if (nexInput !== null) nexInput.focus();
 		setAnswerInput("");
 	};
 
 	const getAnswerAndRightAnswer = (currentAnswer = answerInput) => {
-		let answer = currentAnswer
-			.replace(/[,\.;]/g, ",")
-			.replace(/[`']/g, "’")
-			.replace(/\u00a0/g, " ")
-			.toLowerCase()
-			.trim();
-		let rightAnswer = cardToDraw[currentCardIndex].en
-			.replace(/[,\.;]/g, ",")
-			.replace(/[`']/g, "’")
-			.replace(/\u00a0/g, " ")
-			.toLowerCase()
-			.trim();
+		let answer = formatString(currentAnswer);
+		let rightAnswer = formatString(filteredList[currentCardIndex].en);
 		return { answer, rightAnswer };
 	};
 
@@ -58,78 +99,10 @@ function App() {
 	};
 
 	const showAnswerHandler = () => {
-		const answer = cardToDraw[currentCardIndex].en;
+		const answer = filteredList[currentCardIndex].en;
 		navigator.clipboard.writeText(answer);
 		setAnswerText(answer);
 	};
-
-	const resetState = () => {
-		setAnswerText("");
-		setCurrentCardIndex(0);
-	};
-
-	const updateCards = () => {
-		let filteredData = [...data];
-		if (onlyDifficult) {
-			filteredData = filteredData.filter((item) =>
-				difficultGroup.includes(item.id)
-			);
-		}
-		if (selectedGroups.length != 0) {
-			filteredData = filteredData.filter((_, index) =>
-				selectedGroups.includes(Math.trunc(index / 100) + 1)
-			);
-		}
-		switch (order) {
-			case "default":
-				setCardToDraw(filteredData);
-				break;
-			case "random":
-				setCardToDraw(shuffleArray(filteredData, { copy: true }));
-				break;
-			case "reverse":
-				setCardToDraw([...filteredData].reverse());
-				break;
-		}
-	};
-
-	const setDefaultOrder = () => {
-		setOrder("default");
-		resetState();
-	};
-
-	const setRandomOrder = () => {
-		setOrder("random");
-		resetState();
-	};
-
-	const setReverseOrder = () => {
-		setOrder("reverse");
-		resetState();
-	};
-
-	const toggleGroupItem = (index: number) => {
-		if (selectedGroups.includes(index)) {
-			setSelectedGroups((prev) => prev.filter((i) => i != index));
-			return;
-		}
-		setSelectedGroups((prev) => [...prev, index]);
-	};
-
-	const toggleDifficultItem = (index: number) => {
-		if (difficultGroup.includes(index)) {
-			setDifficultGroup((prev) => prev.filter((i) => i != index));
-			return;
-		}
-		setDifficultGroup((prev) => [...prev, index]);
-	};
-
-	const toggleOnlyDifficult = () => {
-    if (!onlyDifficult) setSelectedGroups([]);
-		setOnlyDifficult((prev) => !prev);
-	};
-
-	useEffect(updateCards, [order, selectedGroups, onlyDifficult]);
 
 	return (
 		<div className="wrapper">
@@ -138,7 +111,7 @@ function App() {
 					<h2 className="buttonsTitle">Англиский для киски</h2>
 					<ul className="buttonsList">
 						<li className="buttonsItem">
-							<label onClick={setDefaultOrder}>
+							<label onClick={() => changeOrderHandler("default")}>
 								<input
 									checked={order === "default"}
 									name="order"
@@ -148,13 +121,13 @@ function App() {
 							</label>
 						</li>
 						<li className="buttonsItem">
-							<label onClick={setRandomOrder}>
+							<label onClick={() => changeOrderHandler("random")}>
 								<input checked={order === "random"} name="order" type="radio" />
 								<span>Вразнобой</span>
 							</label>
 						</li>
 						<li className="buttonsItem">
-							<label onClick={setReverseOrder}>
+							<label onClick={() => changeOrderHandler("reverse")}>
 								<input
 									checked={order === "reverse"}
 									name="order"
@@ -167,19 +140,31 @@ function App() {
 				</div>
 				<div className="middleWrapper">
 					<div className="difficultGroup">
-						<label>
+						<label style={{marginBottom: 10, display: 'block'}}>
 							<input
-								onChange={toggleOnlyDifficult}
+								onChange={() => toggleOnlyDifficultHandler()}
 								checked={onlyDifficult}
 								type="checkbox"
-								disabled={difficultGroup.length === 0}
+								disabled={difficults.length === 0}
+								style={{marginRight: 5}}
 							/>
 							Только сложные
 						</label>
+						<ul>
+							{difficultsList.map((item) => (
+								<li className="difficultItem">
+									<div>{item.rus}</div>
+									<div
+										style={{cursor: 'pointer'}}
+										onClick={() => toggleDifficultHandler(item.id)}
+									>X</div>
+								</li>
+							))}
+						</ul>
 					</div>
 					<div className="cards">
 						<div className="card prev"></div>
-						{cardToDraw.map((card, index) => {
+						{filteredList.map((card, index) => {
 							if (Math.abs(index - currentCardIndex) > 1) return;
 							return (
 								<div
@@ -209,8 +194,8 @@ function App() {
 										</button>
 										<label>
 											<input
-												onChange={() => toggleDifficultItem(card.id)}
-												checked={difficultGroup.includes(card.id)}
+												onChange={() => toggleDifficultHandler(card.id)}
+												checked={difficults.includes(card.id)}
 												type="checkbox"
 											/>{" "}
 											Сложное
@@ -225,8 +210,8 @@ function App() {
 						{selectGroups.map((i) => (
 							<label key={i} className="selectGroupItem">
 								<input
-                  disabled={onlyDifficult}
-									onChange={() => toggleGroupItem(i)}
+									disabled={onlyDifficult}
+									onChange={() => toggleSelectedGroupsHandler(i)}
 									checked={selectedGroups.includes(i)}
 									type="checkbox"
 								/>
