@@ -36,6 +36,13 @@ ul {
   margin-bottom: 20px;
 }
 
+.nameSpacesButtons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
 .buttonsList {
   display: flex;
   align-items: center;

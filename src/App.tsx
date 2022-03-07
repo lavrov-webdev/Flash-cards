@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import cn from "classnames";
 import "./App.css";
-import { OrderType } from "./types";
+import { OrderType, SpaceName } from "./types";
 import { useSelector } from "react-redux";
 import { useAppDispatch, useAppSelector } from "./redux";
 import {
@@ -9,7 +9,9 @@ import {
 	getFilteredWords,
 } from "./redux/selectors/wordsSelectors";
 import { formatString } from "./helpers/formatString";
+import CustomRadioButton from "./components/CustomRadioButton";
 import {
+	changeActualSpace,
 	changeOrder,
 	toggleDifficult,
 	toggleOnlyDifficult,
@@ -19,10 +21,11 @@ import {
 function App() {
 	const dispatch = useAppDispatch();
 
+	const { actualSpace } = useAppSelector(state => state.words);
 	const { originList, order, difficults, onlyDifficult, selectedGroups } =
-		useAppSelector((state) => state.words.memrizeSpace);
-	const filteredList = useSelector(getFilteredWords("memrizeSpace"));
-	const difficultsList = useSelector(getDifficults("memrizeSpace"));
+		useAppSelector((state) => state.words[state.words.actualSpace]);
+	const filteredList = useSelector(getFilteredWords);
+	const difficultsList = useSelector(getDifficults);
 
 	const [answerInput, setAnswerInput] = useState("");
 	const [answerText, setAnswerText] = useState("");
@@ -38,41 +41,24 @@ function App() {
 
 	const resetState = () => {
 		setAnswerText("");
+		setAnswerInput("");
 		setCurrentCardIndex(0);
 	};
 
 	const changeOrderHandler = (order: OrderType) => {
-		dispatch(
-			changeOrder({
-				space: "memrizeSpace",
-				order,
-			})
-		);
+		dispatch(changeOrder(order));
 		resetState();
-	};
-
-	const toggleDifficultHandler = (id: number) => {
-		dispatch(
-			toggleDifficult({
-				space: "memrizeSpace",
-				id,
-			})
-		);
 	};
 
 	const toggleOnlyDifficultHandler = () => {
-		dispatch(toggleOnlyDifficult({ space: "memrizeSpace" }));
+		dispatch(toggleOnlyDifficult());
 		resetState();
 	};
 
-	const toggleSelectedGroupsHandler = (groupid: number) => {
-		dispatch(
-			toggleSelectedGroups({
-				space: "memrizeSpace",
-				groupid,
-			})
-		);
-	};
+	const toggleActualSpaceHandler = (space: SpaceName) => {
+		resetState();
+		dispatch(changeActualSpace(space));
+	}
 
 	const rightAnswerHandler = () => {
 		setCurrentCardIndex((p) => p + 1);
@@ -109,44 +95,55 @@ function App() {
 			<div className="center">
 				<div className="buttons">
 					<h2 className="buttonsTitle">Англиский для киски</h2>
+					<ul className="nameSpacesButtons">
+						<CustomRadioButton
+							clickHandler={() => toggleActualSpaceHandler("memrizeSpace")}
+							checked={actualSpace === "memrizeSpace"}
+							name="spaceName"
+						>
+							Memrize
+						</CustomRadioButton>
+						<CustomRadioButton
+							clickHandler={() => toggleActualSpaceHandler("noteSpace")}
+							checked={actualSpace === "noteSpace"}
+							name="spaceName"
+						>
+							Notes
+						</CustomRadioButton>
+					</ul>
 					<ul className="buttonsList">
-						<li className="buttonsItem">
-							<label onClick={() => changeOrderHandler("default")}>
-								<input
-									checked={order === "default"}
-									name="order"
-									type="radio"
-								/>
-								<span>По порядку</span>
-							</label>
-						</li>
-						<li className="buttonsItem">
-							<label onClick={() => changeOrderHandler("random")}>
-								<input checked={order === "random"} name="order" type="radio" />
-								<span>Вразнобой</span>
-							</label>
-						</li>
-						<li className="buttonsItem">
-							<label onClick={() => changeOrderHandler("reverse")}>
-								<input
-									checked={order === "reverse"}
-									name="order"
-									type="radio"
-								/>
-								<span>Задом наперёд</span>
-							</label>
-						</li>
+						<CustomRadioButton
+							clickHandler={() => changeOrderHandler("default")}
+							checked={order === "default"}
+							name="order"
+						>
+							По порядку
+						</CustomRadioButton>
+						<CustomRadioButton
+							clickHandler={() => changeOrderHandler("random")}
+							checked={order === "random"}
+							name="order"
+						>
+							Вразнобой
+						</CustomRadioButton>
+						<CustomRadioButton
+							clickHandler={() => changeOrderHandler("reverse")}
+							checked={order === "reverse"}
+							name="order"
+						>
+							Задом наперёд
+						</CustomRadioButton>
 					</ul>
 				</div>
 				<div className="middleWrapper">
 					<div className="difficultGroup">
-						<label style={{marginBottom: 10, display: 'block'}}>
+						<label style={{ marginBottom: 10, display: "block" }}>
 							<input
 								onChange={() => toggleOnlyDifficultHandler()}
 								checked={onlyDifficult}
 								type="checkbox"
 								disabled={difficults.length === 0}
-								style={{marginRight: 5}}
+								style={{ marginRight: 5 }}
 							/>
 							Только сложные
 						</label>
@@ -155,9 +152,11 @@ function App() {
 								<li className="difficultItem">
 									<div>{item.rus}</div>
 									<div
-										style={{cursor: 'pointer'}}
-										onClick={() => toggleDifficultHandler(item.id)}
-									>X</div>
+										style={{ cursor: "pointer" }}
+										onClick={() => dispatch(toggleDifficult(item.id))}
+									>
+										X
+									</div>
 								</li>
 							))}
 						</ul>
@@ -194,7 +193,7 @@ function App() {
 										</button>
 										<label>
 											<input
-												onChange={() => toggleDifficultHandler(card.id)}
+												onChange={() => dispatch(toggleDifficult(card.id))}
 												checked={difficults.includes(card.id)}
 												type="checkbox"
 											/>{" "}
@@ -211,7 +210,7 @@ function App() {
 							<label key={i} className="selectGroupItem">
 								<input
 									disabled={onlyDifficult}
-									onChange={() => toggleSelectedGroupsHandler(i)}
+									onChange={() => dispatch(toggleSelectedGroups(i))}
 									checked={selectedGroups.includes(i)}
 									type="checkbox"
 								/>

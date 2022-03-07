@@ -1,4 +1,4 @@
-import { CardType } from './types';
+import { CardType } from '../types';
 let dataHTML = document.createElement('div');
 dataHTML.innerHTML = `
 <div class="things clearfix" data-column-a="1" data-column-b="2"><div class="things-header things-row"><a class="ignore-show button mini" title="" data-placement="right" data-original-title="Change whether words appear in learning sessions"><i class="ico ico-settings"></i>

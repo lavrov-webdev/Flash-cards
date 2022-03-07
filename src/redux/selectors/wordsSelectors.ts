@@ -2,9 +2,9 @@ import shuffleArray from "shuffle-array";
 import { RootState } from "../";
 import { SpaceName } from "../../types";
 
-export const getFilteredWords = (space: SpaceName) => (state: RootState) => {
+export const getFilteredWords = (state: RootState) => {
 	const { difficults, originList, order, selectedGroups, onlyDifficult } =
-		state.words[space];
+		state.words[state.words.actualSpace];
 	let orderedList = originList;
 
 	if (onlyDifficult) orderedList = orderedList.filter((i) => difficults.includes(i.id));
@@ -26,7 +26,7 @@ export const getFilteredWords = (space: SpaceName) => (state: RootState) => {
 	return orderedList;
 };
 
-export const getDifficults = (space: SpaceName) => (state: RootState) => {
-  const { difficults, originList } = state.words[space];
+export const getDifficults = (state: RootState) => {
+  const { difficults, originList } = state.words[state.words.actualSpace];
   return originList.filter(i => difficults.includes(i.id));
 }
