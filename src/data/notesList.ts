@@ -89,6 +89,37 @@ plant - растение
 soon - скоро
 pumpkin seed - тыквенное семечко
 arrange - договориться
+Wont - обыкновение привычка
+wonted - обычный, привычный
+towel - полотенце
+bath - ванна
+exercise - упражнение 
+Pork chop - свиная отбивная
+Beef - говядина
+For the day - на день
+charge - заряжать
+extra fee - дополнительная плата
+convenient - удобный
+ready - готов
+by yourself - самостоятельно
+lately - недавно
+recently - совсем недавно
+medication - медикаментозное лечение
+lay - лежать
+treatment - лечение
+spine - позвоночник
+devote - уделять, посвещать
+for myself - для себя
+while - пока
+go out - выходить
+step - шаг
+haven't been there this year - не был там в этом году
+social media - соц сети
+according to my interests - в соответствии с моими интересами
+accidentally - случайно
+until now - до настоящего момента
+at once - сразу
+one and a half - один с половиной
 `;
 
 let list: CardType[] = text.split('\n').map((item, id) => ({
