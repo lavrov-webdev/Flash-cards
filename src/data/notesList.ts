@@ -120,6 +120,31 @@ accidentally - случайно
 until now - до настоящего момента
 at once - сразу
 one and a half - один с половиной
+
+they miss us - они скучают по нам
+nearby - рядом, поблизости
+calculate - рассчитать, вычислять
+get into the car - сесть в машину
+distance - расстояние
+heavy traffic - интенсивное движение
+convenient - удобный
+public transport - общественный транспорт
+better - лучше
+area - площадь
+warming gel - согревающий гель
+I have headache - у меня болит голова
+backache - боль в спине
+hurt much - очень больно
+outside - за пределами
+freezing - замораживание
+below zero - ниже нуля
+i am used to - я привык к 
+unlikely - навряд ли
+very few - очень мало
+activities - виды деятельности
+I don't do yoga a lot - я немного занимаюсь йогой
+take medication - принимать лекарства
+useful - полезный
 `;
 
 let list: CardType[] = text.split('\n').map((item, id) => ({
