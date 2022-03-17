@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import cn from "classnames";
 import "./App.css";
 import { OrderType, SpaceName } from "./types";
 import { useSelector } from "react-redux";
@@ -8,8 +7,8 @@ import {
 	getDifficults,
 	getFilteredWords,
 } from "./redux/selectors/wordsSelectors";
-import { formatString } from "./helpers/formatString";
 import CustomRadioButton from "./components/CustomRadioButton";
+import Card from "./components/Card";
 import {
 	changeActualSpace,
 	changeOrder,
@@ -21,14 +20,12 @@ import {
 function App() {
 	const dispatch = useAppDispatch();
 
-	const { actualSpace } = useAppSelector(state => state.words);
+	const { actualSpace } = useAppSelector((state) => state.words);
 	const { originList, order, difficults, onlyDifficult, selectedGroups } =
 		useAppSelector((state) => state.words[state.words.actualSpace]);
 	const filteredList = useSelector(getFilteredWords);
 	const difficultsList = useSelector(getDifficults);
 
-	const [answerInput, setAnswerInput] = useState("");
-	const [answerText, setAnswerText] = useState("");
 	const [currentCardIndex, setCurrentCardIndex] = useState(0);
 
 	const numberOfHundred = Math.trunc(originList.length / 100) + 1;
@@ -40,8 +37,6 @@ function App() {
 	}
 
 	const resetState = () => {
-		setAnswerText("");
-		setAnswerInput("");
 		setCurrentCardIndex(0);
 	};
 
@@ -58,36 +53,14 @@ function App() {
 	const toggleActualSpaceHandler = (space: SpaceName) => {
 		resetState();
 		dispatch(changeActualSpace(space));
+	};
+
+	const toggleDifficultHandler = (id: number) => {
+		dispatch(toggleDifficult(id))
 	}
 
-	const rightAnswerHandler = () => {
+	const goToNextCard = () => {
 		setCurrentCardIndex((p) => p + 1);
-		setAnswerText("");
-		let nexInput: HTMLInputElement | null = document.querySelector(
-			`.input-${currentCardIndex + 1}`
-		);
-		if (nexInput !== null) nexInput.focus();
-		setAnswerInput("");
-	};
-
-	const getAnswerAndRightAnswer = (currentAnswer = answerInput) => {
-		let answer = formatString(currentAnswer);
-		let rightAnswer = formatString(filteredList[currentCardIndex].en);
-		return { answer, rightAnswer };
-	};
-
-	const changeAnswerHandler = (e: React.FormEvent<HTMLInputElement>) => {
-		setAnswerInput(e.currentTarget.value);
-		const { answer, rightAnswer } = getAnswerAndRightAnswer(
-			e.currentTarget.value
-		);
-		if (answer === rightAnswer) rightAnswerHandler();
-	};
-
-	const showAnswerHandler = () => {
-		const answer = filteredList[currentCardIndex].en;
-		navigator.clipboard.writeText(answer);
-		setAnswerText(answer);
 	};
 
 	return (
@@ -166,42 +139,15 @@ function App() {
 						{filteredList.map((card, index) => {
 							if (Math.abs(index - currentCardIndex) > 1) return;
 							return (
-								<div
+								<Card
+									card={card}
+									currentCardIndex={currentCardIndex}
+									goToNextCard={goToNextCard}
+									index={index}
 									key={card.id}
-									className={cn("card ", {
-										prev: index < currentCardIndex,
-										current: index === currentCardIndex,
-										next: index > currentCardIndex,
-									})}
-								>
-									<form
-										className="cardForm"
-										onSubmit={(e) => {
-											e.preventDefault();
-											showAnswerHandler();
-										}}
-									>
-										<h2 className="cardTitle">{card.rus}</h2>
-										<span className="cardSubTitle">{index + 1}</span>
-										<input
-											className={`input-${index} inputAnswer`}
-											value={answerInput}
-											onChange={changeAnswerHandler}
-										/>
-										<button className="defaultButton" type="submit">
-											Показать ответ
-										</button>
-										<label>
-											<input
-												onChange={() => dispatch(toggleDifficult(card.id))}
-												checked={difficults.includes(card.id)}
-												type="checkbox"
-											/>{" "}
-											Сложное
-										</label>
-										{answerText && <p className="answerText">{answerText}</p>}
-									</form>
-								</div>
+									isDifficult={difficults.includes(card.id)}
+									toggleDifficultHandler={toggleDifficultHandler}
+								/>
 							);
 						})}
 					</div>
