@@ -145,6 +145,36 @@ activities - виды деятельности
 I don't do yoga a lot - я немного занимаюсь йогой
 take medication - принимать лекарства
 useful - полезный
+
+went out - вышел
+download - скачать
+communicate - общаться
+it is tiring - это утомительно
+grocery - бакалея
+there are no unpleasant smells - нет неприятных запахов
+mashed potato - картофельное пюре
+cutlet - котлета
+the rest of the food - остальная еда
+actions - действия
+very detailed - очень подробный
+organized - организованный
+slum - трущобы
+ghetto - гетто
+robbed - ограбленный
+and he treats other people - и он относится к другим людям
+suffer - страдать
+burn - гореть
+appreciate - ценить 
+subtitles - субтитры
+are shown - показаны
+movie theatre - кинотеатр
+while making a movie - во время создания фильма
+door handle - дверная ручка
+camera man - оператор
+reflection - отражение
+although - несмотря на то что
+the budget - бюджет
+glad - рад
 `;
 
 let list: CardType[] = text.split('\n').map((item, id) => ({
