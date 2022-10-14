@@ -1,5 +1,5 @@
 # Flash-cards
-An application for learning English. You can make a fork to be able to use your word pairs - to do this, import an array of objects with type "CardType" in the src/data/*.ts file. 
+An application for learning English. You can make a fork to be able to use your word pairs - to do this, export an array of objects with type "CardType" in the src/data/*.ts file. 
 ```typescript
 export type CardType = {
   rus: string,
