@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import memrizeList from "../data/memrizeList";
+import memrizeList from "../data/memrize/memrizeList";
 import _ from "lodash";
 import { CardType, OrderType, SpaceName } from "../types";
 import * as LSHelpoers from "../helpers/localStorage";
