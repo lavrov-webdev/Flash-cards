@@ -1,5 +1,4 @@
-let listData = document.createElement("div")
-listData.innerHTML = `
+const listData  = `
  <div class="things clearfix" data-column-a="1" data-column-b="2"><div class="things-header things-row"><a class="ignore-show button mini" title="" data-placement="right" data-original-title="Change whether words appear in learning sessions"><i class="ico ico-settings"></i>
                 пропустить
             </a><i class="ico ico-seed ico-purple"></i> Готово к изучению
